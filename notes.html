@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Notes Input</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .note-container {
+            background-color: white;
+            box-shadow: 0 0 10px rgb(16, 59, 33);
+            border-radius: 10px;
+            width: 100vh;
+            height: 65vh;
+            padding: 20px;
+            position: relative; /* Needed for button positioning */
+        }
+
+        .title-input {
+            width: 100%;
+            border: none;
+            outline: none;
+            font-size: 18px;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .note-input {
+            width: 100%;
+            height: 90%;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            padding: 10px;
+            box-sizing: border-box;
+            resize: none;
+        }
+
+        .note-input:focus::placeholder {
+            color: red;
+        }
+
+        .title-input:focus {
+            border-bottom: 4px solid #12372A;
+        }
+
+        .note-input:focus {
+            border-bottom: 2px solid #12372A;
+        }
+
+        .note-input::placeholder {
+            color: #12372A;
+        }
+
+        .note-input:focus {
+            border: 4px solid #12372A;
+        }
+
+        @media screen and (max-width: 800px) {
+            .note-container {
+                width: 90%;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .note-container {
+                width: 95%;
+                padding: 10px;
+            }
+        }
+
+        /* Buttons styling */
+        .button-container {
+            position: absolute;
+            top: 20px; /* Adjusted to move buttons to the top */
+            right: 20px; /* Positioned to the top right corner */
+            display: flex; /* To align buttons next to each other */
+        }
+
+        .button {
+            background-color: #12372A;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-left: 10px; /* Adds space between buttons */
+        }
+
+    </style>
+</head>
+
+<body>
+    <form action="savenotes.php" method="post">
+        <div class="container">
+            <div class="note-container">
+                <input type="text" class="title-input" name="title" placeholder="Title">
+                <textarea class="note-input" name="description" placeholder="Take a note..."></textarea>
+                <!-- Add a container for the buttons -->
+                <div class="button-container">
+                    <!-- Show Notes button -->
+                    <button type="button" class="button" onclick="window.location.href='shownotes.php'">Show Notes</button>
+                    <!-- Save button -->
+                    <button type="submit" class="button">Save</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>

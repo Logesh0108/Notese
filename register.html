@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Register</title>
+<link rel="icon" type="image/png" href="image/registered.png">
+<link rel="stylesheet" href="css/reg.css">
+<style>
+    .alert {
+       position: fixed;
+       top: 75px;
+       right: 20px;
+       color: white;
+       padding: 10px;
+       border-bottom-right-radius: 10px;
+       border-top-left-radius: 10px;
+       border: 1px solid white;
+   }
+
+   .alert.success {
+       background-color: #28a745; /* Green */
+   }
+
+   .alert.error {
+       background-color: #ff4d4d; /* Red */
+   }
+   .login-box form button {
+    position: relative;
+    display: inline-block;
+    padding: 10px 35px;
+    font-weight: bold;
+    color: #fff;
+    font-size: 16px;
+    text-decoration: none;
+    text-transform: uppercase;
+    overflow: hidden;
+    transition: .5s;
+    margin-top: 40px;
+    letter-spacing: 3px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+  
+</style>
+</head>
+<body>
+<nav class="navbar">
+    <div class="navbar-container container">
+        <input type="checkbox" name="" id="">
+        <div class="hamburger-lines">
+            <span class="line line1"></span>
+            <span class="line line2"></span>
+            <span class="line line3"></span>
+        </div>
+        <ul class="menu-items">
+            <li><a href="landingpage.html">Home</a></li>
+            <li><a href="About.html">About</a></li>
+            <li><a href="contact.php">Contact</a></li>
+            <li><a href="login.html">Manage</a></li>
+        </ul>
+        <h1 class="logo">NOTES-E</h1>
+    </div>
+</nav>
+  <div class="login-box">
+    <form id="loginForm" action="reg.php" method="post" onsubmit="return validateForm()">
+        <div class="user-box">
+            <input required="" name="username" type="text">
+            <label>User Name</label>
+        </div>
+        <div class="user-box">
+            <input required="" name="email" type="email">
+            <label>Email</label>
+        </div>
+        <div class="user-box">
+            <input required="" name="password" id="password" type="password">
+            <label>Password</label>
+        </div>
+        <div class="user-box">
+            <input required="" name="confirm_password" id="confirm_password" type="password">
+            <label>Confirm Password</label>
+        </div>
+        <button type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Register
+        </button>
+        <!-- Additional button -->
+        <button type="button" class="additional-button">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Login Here 
+            </button>
+    </form>
+</div>
+
+
+<div id="alertBox" class="alert" style="display:none;"></div>
+  
+<script>
+    document.querySelector('.additional-button').addEventListener('click', function() {
+        window.location.href = 'login.html'; // Replace 'login.php' with the URL of your login page
+    });
+
+    function validateForm() {
+        var password = document.getElementById("password").value;
+        var confirm_password = document.getElementById("confirm_password").value;
+        
+        if (password !== confirm_password) {
+            showAlert("Passwords do not match.", "error");
+            return false; // Prevent form submission
+        }
+
+        // Add additional validation if needed
+
+        // Show success alert
+        showAlert("Successfully registered.", "success");
+        return true; // Allow form submission
+    }
+
+    function showAlert(message, type) {
+        var alertBox = document.getElementById("alertBox");
+        alertBox.innerHTML = message;
+        alertBox.classList.add(type);
+        alertBox.style.display = "block";
+        if (type === "success") {
+            setTimeout(function() {
+                window.location.href = "login.html"; // Redirect to login page after 3 seconds
+            }, 3000); // Hide alert after 3 seconds
+        }
+    }
+</script>
+
+
+
+</body>
+</html>
